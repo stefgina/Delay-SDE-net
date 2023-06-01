@@ -13,6 +13,7 @@ This script created and load in the selected datasets.
 
 # Imports
 import numpy as np
+import sys
 
 
 
@@ -63,16 +64,24 @@ def load_wind_3sound():
     :return: The test features
     :return: The test response (u wind)
     '''
-    filename_infrasound_37 = 'data\sound_x37.txt'
-    filename_infrasound_18 = 'data\sound_x18.txt'
-    filename_infrasound_53 = 'data\sound_x53.txt'
-    filename_infrasound_37_2 = 'data\sound_y37.txt'
-    filename_infrasound_18_2 = 'data\sound_y18.txt'
-    filename_infrasound_53_2 = 'data\sound_y53.txt'
-    filename_infrasound_37_3 = 'data\sound_ampl37.txt'
-    filename_infrasound_18_3 = 'data\sound_ampl18.txt'
-    filename_infrasound_53_3 = 'data\sound_ampl53.txt'
-    filename_uwind = 'data\wind.txt'
+    
+    os_type = check_os()
+    if os_type == 'Unix':
+        slash = '/'
+    elif os_type == 'Windows':
+        slash = '\\'
+        
+    
+    filename_infrasound_37 = f'data{slash}sound_x37.txt'
+    filename_infrasound_18 = f'data{slash}sound_x18.txt'
+    filename_infrasound_53 = f'data{slash}sound_x53.txt'
+    filename_infrasound_37_2 = f'data{slash}sound_y37.txt'
+    filename_infrasound_18_2 = f'data{slash}sound_y18.txt'
+    filename_infrasound_53_2 = f'data{slash}sound_y53.txt'
+    filename_infrasound_37_3 = f'data{slash}sound_ampl37.txt'
+    filename_infrasound_18_3 = f'data{slash}sound_ampl18.txt'
+    filename_infrasound_53_3 = f'data{slash}sound_ampl53.txt'
+    filename_uwind = f'data{slash}wind.txt'
     
     infrasound_sin_37 = np.loadtxt(filename_infrasound_37)
     infrasound_sin_18 = np.loadtxt(filename_infrasound_18)
